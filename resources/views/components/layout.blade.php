@@ -54,11 +54,14 @@
 
     }
 
-    h2,
-    a {
+    h2 {
         font-size: 1.5rem;
         color: rgb(0, 58, 81);
         text-decoration: none
+    }
+
+    a {
+        text-decoration: none;
     }
 
     p {
