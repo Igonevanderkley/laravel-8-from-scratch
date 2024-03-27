@@ -15,43 +15,20 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        User::truncate();
-        Category::truncate();
-        Post::truncate();
-
-        $user = User::factory()->create();
-
-        $personal = Category::create([
-            'name' => 'Personal',
-            'slug' => 'personal'
+        $user1 = User::factory()->create([
+            'name' => 'John Doe'
         ]);
 
-        $family = Category::create([
-            'name' => 'Family',
-            'slug' => 'family'
+        $user2 = User::factory()->create([
+            'name' => 'Jane Doe'
+        ]);
+        //run post factory
+        Post::factory(5)->create([
+            'user_id' => $user1->id,
         ]);
 
-        $work = Category::create([
-            'name' => 'Work',
-            'slug' => 'work'
-        ]);
-
-        Post::create([
-            'user_id' => $user->id,
-            'category_id' => $family->id,
-            'title' => 'Family post',
-            'slug' => 'my-family-post',
-            'excerpt' => 'lorem ipsum dolar sit amet',
-            'body' => '<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dick</p>'
-        ]);
-
-        Post::create([
-            'user_id' => $user->id,
-            'category_id' => $work->id,
-            'title' => 'Work post',
-            'slug' => 'my-work-post',
-            'excerpt' => 'lorem ipsum dolar sit amet',
-            'body' => '<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dick</p>'
+        Post::factory(5)->create([
+            'user_id' => $user2->id,
         ]);
 
     }
